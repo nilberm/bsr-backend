@@ -29,8 +29,14 @@ export class ExpenseCategoriesService {
     }
   }
 
-  findAll() {
-    return `This action returns all expenseCategories`;
+  async findAll() {
+    try {
+      const expenseCategories = await this.prisma.expenseCategories.findMany();
+
+      return expenseCategories;
+    } catch (error) {
+      throw error;
+    }
   }
 
   findOne(id: number) {

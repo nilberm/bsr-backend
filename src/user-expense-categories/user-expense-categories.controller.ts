@@ -10,6 +10,8 @@ import {
 import { UserExpenseCategoriesService } from './user-expense-categories.service';
 import { CreateUserExpenseCategoryDto } from './dto/create-user-expense-category.dto';
 import { UpdateUserExpenseCategoryDto } from './dto/update-user-expense-category.dto';
+import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
+import { User } from 'src/user/entities/user.entity';
 
 @Controller('user-expense-categories')
 export class UserExpenseCategoriesController {
@@ -18,9 +20,13 @@ export class UserExpenseCategoriesController {
   ) {}
 
   @Post()
-  create(@Body() createUserExpenseCategoryDto: CreateUserExpenseCategoryDto) {
+  create(
+    @Body() createUserExpenseCategoryDto: CreateUserExpenseCategoryDto,
+    @CurrentUser() user: User,
+  ) {
     return this.userExpenseCategoriesService.create(
       createUserExpenseCategoryDto,
+      user,
     );
   }
 

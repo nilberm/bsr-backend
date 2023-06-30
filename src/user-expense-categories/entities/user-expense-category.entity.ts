@@ -1,1 +1,4 @@
-export class UserExpenseCategory {}
+export class UserExpenseCategory {
+  name: string;
+  categoryId: number;
+}
