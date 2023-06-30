@@ -4,12 +4,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { ExpenseCategoriesModule } from './expense-categories/expense-categories.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { UserModule } from './user/user.module';
-import { CategoriesExpensesModule } from './categories-expenses/categories-expenses.module';
+import { UserExpenseCategoriesModule } from './user-expense-categories/user-expense-categories.module';
 
 @Module({
-  imports: [PrismaModule, UserModule, AuthModule, CategoriesExpensesModule],
+  imports: [PrismaModule, UserModule, AuthModule, ExpenseCategoriesModule, UserExpenseCategoriesModule],
   controllers: [AppController],
   providers: [
     AppService,
